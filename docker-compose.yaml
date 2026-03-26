@@ -1,0 +1,8 @@
+services:
+  engine:
+    build:
+      context: ./engine
+    volumes:
+      - ./data:/data
+    command:
+      ["--seed", "42", "--size", "50", "--agents", "all", "--out", "/data"]
