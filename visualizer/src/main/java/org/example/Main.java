@@ -20,6 +20,41 @@ public class Main extends Application {
 
         Button runButton = new Button("Run");
 
+        runButton.setOnAction(e -> {
+            try {
+                String seed = seedField.getText();
+                String size = sizeField.getText();
+
+                //Run the engine
+                ProcessBuilder pb = new ProcessBuilder(
+                        "go", "run", "cmd/main.go",
+                        "--seed", seed,
+                        "--size", size,
+                        "--agents", "all"
+                );
+
+                pb.directory(new java.io.File("../engine"));
+                pb.start().waitFor();
+
+                System.out.println("Engine finished!");
+
+                // Load JSON
+                Maze maze = MazeLoader.load();
+                java.util.List<AgentResult> results = ResultsLoader.load();
+
+                System.out.println("Loaded maze size: " + maze.size);
+
+                // Switch to Maze Screen
+                MazeScreen mazeScreen = new MazeScreen();
+                Scene mazeScene = mazeScreen.createScene(stage, maze, results);
+
+                stage.setScene(mazeScene);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
         VBox layout = new VBox(10, seedField, sizeField, runButton);
         layout.setAlignment(Pos.CENTER);
 

@@ -1,6 +1,9 @@
-org\example\AgentResult.class
 org\example\Position.class
 org\example\Main.class
 org\example\Maze.class
+org\example\ResultsScreen.class
+org\example\MazeScreen.class
+org\example\AgentResult.class
+org\example\MazeScreen$1.class
 org\example\MazeLoader.class
 org\example\ResultsLoader.class

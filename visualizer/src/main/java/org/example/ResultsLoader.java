@@ -11,7 +11,7 @@ public class ResultsLoader {
         try {
             ObjectMapper mapper = new ObjectMapper();
             AgentResult[] results = mapper.readValue(
-                    new File("data/results.json"),
+                    new File("../data/results.json"),
                     AgentResult[].class
             );
             return Arrays.asList(results);

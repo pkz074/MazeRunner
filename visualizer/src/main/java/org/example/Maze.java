@@ -8,4 +8,6 @@ public class Maze {
     public int seed;
     public Position start;
     public Position end;
+
+
 }

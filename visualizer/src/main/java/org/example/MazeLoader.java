@@ -8,7 +8,7 @@ public class MazeLoader {
     public static Maze load() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(new File("data/maze.json"), Maze.class);
+            return mapper.readValue(new File("../data/maze.json"), Maze.class);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
