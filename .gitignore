@@ -1,0 +1,23 @@
+# Go
+engine/mazerunner
+engine/*.exe
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+analysis/.venv/
+visualizer/.venv/
+
+# Generated data
+data/maze.json
+data/results.json
+analysis/output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
