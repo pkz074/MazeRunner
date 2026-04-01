@@ -10,7 +10,7 @@ engine-local:
 	cd engine && go run cmd/main.go --seed 42 --size 50 --agents all
 
 analysis:
-	cd analysis && pip install -r requirements.txt -q && python src/analyzer.py
+	cd analysis && pip install -r requirements.txt -q && python src/analyze.py
 
 analysis-single:
 	cd analysis && pip install -r requirements.txt -q && python -c "from src.analyzer import MazeAnalyzer; a = MazeAnalyzer(); a.load_single(); a.generate_charts(); a.generate_summary_md()"

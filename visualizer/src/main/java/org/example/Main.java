@@ -11,7 +11,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-
         TextField seedField = new TextField();
         seedField.setPromptText("Enter seed");
 
@@ -27,17 +26,26 @@ public class Main extends Application {
 
                 //Run the engine
                 ProcessBuilder pb = new ProcessBuilder(
-                        "go", "run", "cmd/main.go",
-                        "--seed", seed,
-                        "--size", size,
-                        "--agents", "all"
+                    "docker",
+                    "compose",
+                    "run",
+                    "--rm",
+                    "engine",
+                    "--seed",
+                    seed,
+                    "--size",
+                    size,
+                    "--agents",
+                    "all"
                 );
-
-                pb.directory(new java.io.File("../engine"));
-                pb.start().waitFor();
-
-                System.out.println("Engine finished!");
-
+                pb.directory(new java.io.File("../"));
+                Process process = pb.start();
+                int exitCode = process.waitFor();
+                System.out.println("Engine exit code: " + exitCode);
+                if (exitCode != 0) {
+                    System.out.println("Engine failed!");
+                    return;
+                }
                 // Load JSON
                 Maze maze = MazeLoader.load();
                 java.util.List<AgentResult> results = ResultsLoader.load();
@@ -49,7 +57,6 @@ public class Main extends Application {
                 Scene mazeScene = mazeScreen.createScene(stage, maze, results);
 
                 stage.setScene(mazeScene);
-
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

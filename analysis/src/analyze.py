@@ -153,10 +153,12 @@ class MazeAnalyzer:
                 f"demonstrating the value of heuristic guidance."
             )
         else:
+            excess = ((informed_avg_nodes - blind_avg_nodes) / blind_avg_nodes) * 100
             lines.append(
-                f"- **Informed vs blind agents:** On this maze configuration, blind agents were "
-                f"competitive with informed ones — this can happen on low-weight uniform terrain "
-                f"where heuristics provide less advantage."
+                f"- **Informed vs blind agents:** On this maze configuration, blind agents expanded "
+                f"fewer nodes on average ({blind_avg_nodes:.0f} vs {informed_avg_nodes:.0f}), "
+                f"{excess:.1f}% less than informed ones — this can occur on mazes where terrain "
+                f"weights mislead the heuristic."
             )
 
         # A* heuristic comparison
