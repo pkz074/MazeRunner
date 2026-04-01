@@ -193,9 +193,9 @@ if __name__ == "__main__":
 
     # == UNCOMMENT THIS TO RUN WITHOUT DOCKER
     # Single run (no Docker needed, uses existing results.json)
-    # analyzer.load_single()
-    # analyzer.generate_charts()
-    # analyzer.generate_summary_md()
+    analyzer.load_single()
+    analyzer.generate_charts()
+    analyzer.generate_summary_md()
 
     # == UNCOMMENT THIS TO RUN WITH DOCKER
     # Full batch run
